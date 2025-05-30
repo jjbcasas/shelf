@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Shelf</title>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <!-- Header -->
+      <header>
+
+          <!-- Name or Logo -->
+          <div class="navbar bg-base-100 shadow-sm">
+              <div class="flex justify-center flex-1">
+              <a href="/" class="btn btn-ghost text-xl w-1/6">SHELF</a>
+              </div>
+          </div>
+
+      </header>
+      
+      <!-- Main div -->
+      <div class="container min-h-125">
+          <div class="row justify-content-center">
+              <section class="col-6 mt-5 w-full flex">
+                <section class="mx-auto">
+
+                  <!-- Back Button -->
+                  <a href="/" class="btn btn-primary">&lt Back</a>
+
+                  <!-- Flash Message -->
+                  <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                      <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %>    
+                  <% } %>
+                  <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                      <div class="alert alert-info"><%= el.msg %></div>
+                      <% }) %>    
+                  <% } %>
+
+                  <!-- Sign Up Form -->
+                  <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 mt-2 rounded-box">
+                    <form action="/signup" method="POST">
+                        <div class="mb-3">
+                            <label for="userName" class="fieldset-label">User Name</label>
+                            <input type="text" class="input" id="userName" name="userName">
+                          </div>
+                        <div class="mb-3">
+                          <label for="email" class="fieldset-label">Email address</label>
+                          <input type="email" class="input" id="email" aria-describedby="emailHelp" name="email">
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="password" class="fieldset-label">Password</label>
+                          <input type="password" class="input" id="password" name="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="fieldset-label">Confirm Password</label>
+                            <input type="password" class="input" id="confirmPassword" name="confirmPassword">
+                          </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                  </fieldset>
+                </section>
+              </section>
+          </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+        <aside>
+          <p>Copyright © 2025 - All right reserved.</p>
+        </aside>
+      </footer>
+
+  </body>
+</html>

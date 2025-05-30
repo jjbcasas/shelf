@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shelf</title>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body>
+        
+        <!-- Header -->
+        <header>
+            <div class="navbar bg-base-100 shadow-sm">
+                <!-- Name or Logo -->
+                <div class="flex-1">
+                    <a class="btn btn-ghost text-xl" href="/category">SHELF</a>
+                </div>
+                <!-- Profile Photo -->
+                <div class="flex gap-2 mr-3">
+                    <!-- <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" /> -->
+                    <% if (user.profileImage) {%>
+                        <div>
+                            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                                <div class="w-10 rounded-full">
+                                    <a href="/category">
+                                        <img src="<%= user.profileImage %>" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="avatar avatar-placeholder">
+                            <div class="bg-neutral text-neutral-content w-10 rounded-full">
+                                <span class="text-2xl"><%= user.userName.split(' ').map(word => word.charAt(0).toUpperCase()).join(' ') %></span>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Section -->
+        <div class="min-h-128 flex">
+            
+            <div class="w-1/5 h-2/5 p-1">
+                <!-- Navigation -->
+                <nav>
+                    <ul class="menu bg-base-200 w-full [&_li>*]:rounded-none p-0">
+                        <li><a href="/category">Home</a></li>
+                        <li><a href="/category/getInventory" class="menu-active">Inventory</a></li>
+                        <li><a href="/category/getTransaction">Make Transaction</a></li>
+                        <li>
+                            <details>
+                                <summary>Transaction Log</summary>
+                                <ul>
+                                    <li><a href="/category/getLog">Incoming</a></li>
+                                    <li><a href="/category/getOutgoing">Outgoing</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Main Div for the Main Content -->
+            <div class="overflow-x-auto w-4/5">
+                <!-- Main Heading of the page -->
+                <h1 class="text-2xl pl-2 pb-5 text-center"><%= user.userName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %>'s Inventory</h1>
+
+                <!-- List of Categories with a table -->
+                <ul>
+                    <% for ( let i = 0; i < items.length; i++ ) { %>
+                    <li>
+                        <% for ( let j = 0; j < categories.length; j++ ) { %>
+                            <% if ( categories[j]._id.toString() === items[i]._id.toString() ) { %>
+                                <h2 class="text-center"><%= categories[j].name %></h2>
+                            <% } %>
+                        <% } %>
+
+                        <!-- List of items on the same category -->
+                        <ul>
+                            <% for ( let j = 0; j < items[i].labels.length; j++ ) { %>
+                            <li class="pb-5">
+                                <table class="table table-xs">
+                                    <!-- Table Head -->
+                                    <thead>
+                                
+                                        <tr>
+                                            <th><%= items[i].labels[j].labelName %></th>
+
+                                            <% if (items[i].labels[j].items[0].itemLabelTwo) { %>
+                                                <th><%= items[i].labels[j].items[0].itemLabelTwo %></th>
+                                            <% } %>
+
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Cost per Unit</th>
+                                            <th>Quantity</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <!-- Table Body -->
+                                    <% items[i].labels[j].items.forEach( item =>  {%>
+                                        <tbody>
+                                                <tr>
+                                                    <td><%= item.itemValueOne %></td>
+
+                                                    <% if (items[i].labels[j].items[0].itemValueTwo) { %>
+                                                        <td><%= item.itemValueTwo %></td>
+                                                    <% } %>
+
+                                                    <td><%= item.description %></td>
+                                                    <td><%= item.status %></td>
+                                                    <td><%= item.currency + item.costPerUnit %></td>
+                                                    <td><%= item.quantity + ' ' + item.unit %></td>
+                                                </tr>
+                                        </tbody>
+                                    <% }) %>
+                                </table>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+            <aside>
+                <p>Copyright © 2025 - All right reserved.</p>
+            </aside>
+        </footer>
+
+    </body>
+</html>
