@@ -234,8 +234,18 @@ module.exports = {
     },
     getOutgoing: async ( req, res ) => {
         try {
+            // Get all the category under the user and get just the category field
+            const categories = await Category.find({ user: req.user.id }, { _id: 1 }).lean()
+            // use map to extract all the id and onto an array
+            const categoriesId = categories.map( cat => cat._id )
             // Get all sales and then aggregate
             const dateLogs = await Sales.aggregate([
+                {
+                    // Add $match STAGE to filter Log using categoryId
+                    $match: {
+                        categoryId: { $in: categoriesId } // Use $in operator to match against an array of IDs
+                    }
+                },
                 {
                     // First Grouping - by Day AND itemLabelOne
                     // We'll create a composite _id for this intermediate grouping
@@ -275,10 +285,18 @@ module.exports = {
     },
     getInventory: async ( req, res ) => {
         try {
-            // Get all Categories
-            const categories = await Category.find({ user: req.user.id }).sort({ name: 1}).lean()
+            // Get all the category under the user and get just the category field
+            const categories = await Category.find({ user: req.user.id }).lean()
+            // use map to extract all the id and onto an array
+            const categoriesId = categories.map( cat => cat._id )
             // Get all items and then aggregate
             const items = await Item.aggregate([
+                {
+                    // Add $match STAGE to filter Log using categoryId
+                    $match: {
+                        categoryId: { $in: categoriesId } // Use $in operator to match against an array of IDs
+                    }
+                },
                 {
                     // First Grouping - by categoryId AND itemLabelOne
                     // We'll create a composite _id for this intermediate grouping
@@ -318,10 +336,14 @@ module.exports = {
     },
     getTransaction: async ( req, res ) => {
         try {
+            // Get all the category under the user and get just the category field
+            const categories = await Category.find({ user: req.user.id }).lean()
+            // use map to extract all the id and onto an array
+            const categoriesId = categories.map( cat => cat._id )
             // Get all items and sort it
-            const items = await Item.find().sort({ itemValueOne: 1, itemValueTwo: 1 }).lean()
-            // Get all categories
-            const categories = await Category.find().sort({ name: 1 }).lean()
+            const items = await Item.find({
+                categoryId: { $in: categoriesId }
+            }).sort({ itemValueOne: 1, itemValueTwo: 1 }).lean()
 
             res.render('transaction.ejs', { user: req.user, categories: categories, items: items })
         } catch (error) {
