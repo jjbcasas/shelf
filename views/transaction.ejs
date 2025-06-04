@@ -106,6 +106,7 @@
                                     <select class="select" name="status" id="status" required>
                                         <option value="" disabled selected>Select Status</option>
                                         <option value="Delivery">Delivery</option>
+                                        <option value="Purchased">Purchased</option>
                                         <option value="Returned Item">Returned Item</option>
                                         <option value="Sold">Sold</option>
                                         <option value="Returned Item">Factory Defect</option>
@@ -119,7 +120,7 @@
                                             <option value="&dollar;">&dollar;</option>
                                         </select>
                                         <div>
-                                            <input type="text" name="cost" class="input" id="cost" min="0.00" required/>
+                                            <input type="text" name="cost" class="input" id="cost" min="0.00" step="0.01" required/>
                                         </div>
                                     </div>
 
@@ -195,7 +196,7 @@
                                             <option value="&dollar;">&dollar;</option>
                                         </select>
                                         <div>
-                                            <input type="number" name="totalAmount" class="input" id="totalAmount" min="0.00" />
+                                            <input type="number" name="totalAmount" class="input" id="totalAmount" min="0.00" step="0.01"/>
                                         </div>
                                     </div>
 

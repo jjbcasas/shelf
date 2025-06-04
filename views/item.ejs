@@ -114,6 +114,7 @@
                             <select class="select" name="status" id="status" required>
                                 <option value="" disabled selected>Select Status</option>
                                 <option value="Delivery">Delivery</option>
+                                <option value="Purchased">Purchased</option>
                                 <option value="Returned Item">Returned Item</option>
                                 <option value="Others">Others</option>
                             </select>
@@ -125,7 +126,7 @@
                                     <option value="&dollar;">&dollar;</option>
                                 </select>
                                 <div>
-                                    <input type="number" name="cost" class="input" id="cost" min="0.00" required/>
+                                    <input type="number" name="cost" class="input" id="cost" min="0.00" step="0.01" required/>
                                 </div>
                             </div>
 
@@ -194,7 +195,7 @@
                             <% } else { %>
                                 <div class="avatar avatar-placeholder" tabindex="0" role="button">
                                     <div class="bg-neutral text-neutral-content w-32 rounded-full">
-                                        <span class="text-xl"><%= items[i].itemValueOne.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %></span>
+                                        <span class="text-xl text-center"><%= items[i].itemValueOne.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %></span>
                                     </div>
                                 </div>
                                 <div tabindex="0" class="menu dropdown-content bg-base-100 rounded-box z-1 w-56 p-2 shadow mt-20">
