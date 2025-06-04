@@ -90,11 +90,11 @@ module.exports = {
                     description: req.body.description,
                     status: req.body.status,
                     categoryId: req.params.id,
-                    totalCost: (req.body.cost).toFixed(2),
+                    totalCost: parseFloat((req.body.cost).toFixed(2)),
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: (totalAmount / totalQuantity).toFixed(2),
+                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
                     itemPhoto: uploadResult.secure_url,
                     cloudinaryId: uploadResult.public_id
                 })
@@ -118,11 +118,11 @@ module.exports = {
                     description: req.body.description,
                     status: req.body.status,
                     categoryId: req.params.id,
-                    totalCost: (req.body.cost).toFixed(2),
+                    totalCost: parseFloat((req.body.cost).toFixed(2)),
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: (totalAmount / totalQuantity).toFixed(2),
+                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
                 })
 
                 // update the category at the same time
@@ -149,11 +149,11 @@ module.exports = {
                     description: req.body.description,
                     status: req.body.status,
                     categoryId: req.params.id,
-                    totalCost: (req.body.cost).toFixed(2),
+                    totalCost: parseFloat((req.body.cost).toFixed(2)),
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: (totalAmount / totalQuantity).toFixed(2),
+                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
                     itemPhoto: uploadResult.secure_url,
                     cloudinaryId: uploadResult.public_id
                 })
@@ -167,11 +167,11 @@ module.exports = {
                     description: req.body.description,
                     status: req.body.status,
                     categoryId: req.params.id,
-                    totalCost: (req.body.cost).toFixed(2),
+                    totalCost: parseFloat((req.body.cost).toFixed(2)),
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: (totalAmount / totalQuantity).toFixed(2),
+                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
                 })
             }
 
@@ -373,7 +373,7 @@ module.exports = {
                         totalCost: req.body.cost,
                         quantity: req.body.quantity,
                     },
-                    $set : { costPerUnit: average.toFixed(2) }
+                    $set : { costPerUnit: parseFloat(average.toFixed(2)) }
                 }
             )
 
@@ -388,11 +388,11 @@ module.exports = {
                     description: req.body.description,
                     status: req.body.status,
                     categoryId: items.categoryId,
-                    totalCost: req.body.cost,
+                    totalCost: parseFloat((req.body.cost).toFixed(2)),
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: req.body.cost / req.body.quantity,
+                    costPerUnit: parseFloat((req.body.cost / req.body.quantity).toFixed(2)),
                     itemPhoto: uploadResult.secure_url,
                     cloudinaryId: uploadResult.public_id
                 })
@@ -405,11 +405,11 @@ module.exports = {
                     description: req.body.description,
                     status: req.body.status,
                     categoryId: items.categoryId,
-                    totalCost: req.body.cost,
+                    totalCost: parseFloat((req.body.cost).toFixed(2)),
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: req.body.cost / req.body.quantity,
+                    costPerUnit: parseFloat((req.body.cost / req.body.quantity).toFixed(2)),
                 })
             }
 
@@ -445,7 +445,7 @@ module.exports = {
                         quantity: -parseFloat(req.body.quantity),
                     },
                     $set : { 
-                        totalCost: amount.toFixed(2),
+                        totalCost: parseFloat(amount.toFixed(2)),
                     }
                 }
             )
@@ -471,7 +471,7 @@ module.exports = {
                         cloudinaryId: uploadResult.public_id,
                         totalAmount: req.body.totalAmount,
                         currency: req.body.currency,
-                        unitPrice: (req.body.totalAmount / req.body.quantity).toFixed(2),
+                        unitPrice: parseFloat((req.body.totalAmount / req.body.quantity).toFixed(2)),
                         profit: (req.body.totalAmount / req.body.quantity) - items.costPerUnit,
                         remainingStock: remainingStock
                     })
@@ -506,7 +506,7 @@ module.exports = {
                         unit: req.body.unit,
                         totalAmount: req.body.totalAmount,
                         currency: req.body.currency,
-                        unitPrice: (req.body.totalAmount / req.body.quantity).toFixed(2),
+                        unitPrice: parseFloat((req.body.totalAmount / req.body.quantity).toFixed(2)),
                         profit: (req.body.totalAmount / req.body.quantity) - items.costPerUnit,
                         remainingStock: remainingStock
                     })
