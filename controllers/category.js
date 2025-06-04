@@ -94,7 +94,7 @@ module.exports = {
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
+                    costPerUnit: parseFloat(Math.trunc((totalAmount / totalQuantity) * 100) / 100),
                     itemPhoto: uploadResult.secure_url,
                     cloudinaryId: uploadResult.public_id
                 })
@@ -122,7 +122,7 @@ module.exports = {
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
+                    costPerUnit: parseFloat(Math.trunc((totalAmount / totalQuantity) * 100) / 100),
                 })
 
                 // update the category at the same time
@@ -153,7 +153,7 @@ module.exports = {
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
+                    costPerUnit: parseFloat(Math.trunc((totalAmount / totalQuantity) * 100) / 100),
                     itemPhoto: uploadResult.secure_url,
                     cloudinaryId: uploadResult.public_id
                 })
@@ -171,7 +171,7 @@ module.exports = {
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: parseFloat((totalAmount / totalQuantity).toFixed(2)),
+                    costPerUnit: parseFloat(Math.trunc((totalAmount / totalQuantity) * 100) / 100),
                 })
             }
 
@@ -373,7 +373,7 @@ module.exports = {
                         totalCost: req.body.cost,
                         quantity: req.body.quantity,
                     },
-                    $set : { costPerUnit: parseFloat(average.toFixed(2)) }
+                    $set : { costPerUnit: parseFloat(Math.trunc(average * 100) / 100) }
                 }
             )
 
@@ -392,7 +392,7 @@ module.exports = {
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: parseFloat((req.body.cost / req.body.quantity).toFixed(2)),
+                    costPerUnit: parseFloat(Math.trunc((req.body.cost / req.body.quantity) * 100) / 100),
                     itemPhoto: uploadResult.secure_url,
                     cloudinaryId: uploadResult.public_id
                 })
@@ -409,7 +409,7 @@ module.exports = {
                     currency: req.body.currency,
                     quantity: req.body.quantity,
                     unit: req.body.unit,
-                    costPerUnit: parseFloat((req.body.cost / req.body.quantity).toFixed(2)),
+                    costPerUnit: parseFloat(Math.trunc((req.body.cost / req.body.quantity) * 100) / 100),
                 })
             }
 
@@ -445,7 +445,7 @@ module.exports = {
                         quantity: -parseFloat(req.body.quantity),
                     },
                     $set : { 
-                        totalCost: parseFloat(amount.toFixed(2)),
+                        totalCost: parseFloat(Math.trunc(amount * 100) / 100)
                     }
                 }
             )
@@ -471,7 +471,7 @@ module.exports = {
                         cloudinaryId: uploadResult.public_id,
                         totalAmount: req.body.totalAmount,
                         currency: req.body.currency,
-                        unitPrice: parseFloat((req.body.totalAmount / req.body.quantity).toFixed(2)),
+                        unitPrice: parseFloat(Math.trunc((req.body.totalAmount / req.body.quantity) * 100) / 100),
                         profit: (req.body.totalAmount / req.body.quantity) - items.costPerUnit,
                         remainingStock: remainingStock
                     })
@@ -506,7 +506,7 @@ module.exports = {
                         unit: req.body.unit,
                         totalAmount: req.body.totalAmount,
                         currency: req.body.currency,
-                        unitPrice: parseFloat((req.body.totalAmount / req.body.quantity).toFixed(2)),
+                        unitPrice: parseFloat(Math.trunc((req.body.totalAmount / req.body.quantity) * 100) / 100),
                         profit: (req.body.totalAmount / req.body.quantity) - items.costPerUnit,
                         remainingStock: remainingStock
                     })
