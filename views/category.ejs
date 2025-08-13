@@ -43,12 +43,12 @@
         </header>
         
         <!-- Main Section -->
-        <div class="min-h-128 flex">
+        <div class="min-h-128 flex flex-col min-[450px]:flex-row">
 
-            <div class="w-1/5 min-h-2/5 p-1">
+            <div class="min-[685px]:w-1/5 min-h-2/5 p-1">
                 <!-- Navigation -->
                 <nav>
-                    <ul class="menu bg-base-200 w-full [&_li>*]:rounded-none p-0">
+                    <ul class="menu bg-base-200 w-full [&_li>*]:rounded-none p-0 flex-row min-[450px]:flex-col justify-center">
                         <li><a href="/category" class="menu-active">Home</a></li>
                         <li><a href="/category/getInventory">Inventory</a></li>
                         <li><a href="/category/getTransaction">Make Transaction</a></li>
@@ -65,7 +65,7 @@
                     </ul>
                 </nav>
             
-                <ul class="menu full:menu-horizontal bg-base-200 rounded-box mt-3 mx-auto w-full">
+                <ul class="menu full:menu-horizontal bg-base-200 rounded-box mt-3 mx-auto w-full flex-row justify-center">
                     <!-- Uploading of Profile Photo -->
                     <li>
                     <!-- Adding a Photo -->
@@ -124,13 +124,13 @@
             </div>
 
             <!-- Main Content Section or the Categories -->
-            <div class="w-4/5 h-1/4 p-1">
+            <div class="w-full min-[685px]:w-4/5 h-1/4 p-1">
                 <!-- Heading of the Page/Category -->
                 <h1 class="text-2xl pl-2 pb-5 text-center"><%= user.userName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %>'s Categories</h1>
                 <!-- List of the Categories -->
-                <ul class="flex flex-wrap">
+                <ul class="flex flex-wrap justify-center">
                     <% for ( var i = 0; i < categories.length ; i++ ) { %>
-                    <li class="mx-1 pb-2">
+                    <li class="px-1 pb-2">
                         <div class="card bg-base-100 w-3xs shadow-sm h-full">
                             
                             <!-- Avatar of the category -->

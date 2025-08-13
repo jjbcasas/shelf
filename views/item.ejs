@@ -46,14 +46,14 @@
         </header>
 
         <!-- Main Section -->
-        <div class="min-h-128 flex">
+        <div class="min-h-128 flex flex-col min-[450px]:flex-row">
             
             <!-- Left Vertical Div -->
-            <div class="w-1/5 h-2/5 p-1">
+            <div class="min-[685px]:w-1/5 h-2/5 p-1">
 
                 <!-- Navigation -->
                 <nav>
-                    <ul class="menu bg-base-200 w-full [&_li>*]:rounded-none p-0">
+                    <ul class="menu bg-base-200 w-full [&_li>*]:rounded-none p-0 flex-row min-[450px]:flex-col justify-center">
                         <li><a href="/category">Home</a></li>
                         <li><a href="/category/getInventory">Inventory</a></li>
                         <li><a href="/category/getTransaction">Make Transaction</a></li>
@@ -162,7 +162,7 @@
             </div>
 
             <!-- Main Content div -->
-            <div class="w-4/5 h-1/4 p-1">
+            <div class="w-full min-[685px]:w-4/5 h-1/4 p-1">
 
                 <div class="flex text-3xl pb-5 pt-2">
 
@@ -177,7 +177,7 @@
 
                 <!-- List of items -->
                 <% if ( categories[0].items > 0 ) { %>
-                <ul class="flex flex-wrap">
+                <ul class="flex flex-wrap justify-center">
                     <% for ( var i = 0; i < items.length ; i++ ) { %>
                     <li class="mx-1 pb-2">
 
