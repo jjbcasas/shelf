@@ -67,7 +67,7 @@
             
                 <ul class="menu full:menu-horizontal bg-base-200 rounded-box mt-3 mx-auto w-full flex-row justify-center">
                     <!-- Uploading of Profile Photo -->
-                    <li>
+                    <li class="w-full">
                     <!-- Adding a Photo -->
                     <% if ( user.profileImage ) { %>
                     <details>
@@ -76,7 +76,7 @@
                             <div>
                                 <input type="file" name="file" class="file-input">
                             </div>
-                            <div>
+                            <div class="w-full text-center">
                                 <button type="submit" class="btn btn-neutral mt-4">Upload</button>
                             </div>
                         </form>
@@ -89,7 +89,7 @@
                             <div>
                                 <input type="file" name="file" class="file-input">
                             </div>
-                            <div>
+                            <div class="w-full text-center">
                                 <button type="submit" class="btn btn-neutral mt-4">Upload</button>
                             </div>
                         </form>
@@ -100,7 +100,7 @@
                     <!-- Adding a Category -->
                     <li class="w-full">
                         <details class="mx-auto">
-                            <summary>Add Category</summary>
+                            <summary class="flex justify-center">Add Category</summary>
                             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4 mt-2">
                                 <form action="/category/createCategory" enctype="multipart/form-data" method="POST">
                                     
