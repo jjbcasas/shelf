@@ -71,7 +71,7 @@
                     <!-- Adding a Photo -->
                     <% if ( user.profileImage ) { %>
                     <details>
-                        <summary class="text-center">Change Profile Photo</summary>
+                        <summary class="text-center flex justify-center">Change Profile Photo</summary>
                         <form action="/category/changeProfilePhoto?_method=PUT" enctype="multipart/form-data" method="POST" class="bg-base-100 rounded-t-none p-2">
                             <div>
                                 <input type="file" name="file" class="file-input">
@@ -84,7 +84,7 @@
                     <!-- Changing the Photo-->
                     <% } else { %>
                         <details>
-                        <summary class="text-center">Add Profile Photo</summary>
+                        <summary class="text-center flex justify-center">Add Profile Photo</summary>
                         <form action="/category/uploadProfilePhoto?_method=PUT" enctype="multipart/form-data" method="POST" class="bg-base-100 rounded-t-none p-2">
                             <div>
                                 <input type="file" name="file" class="file-input">
