@@ -4,7 +4,7 @@
  <img src="https://github.com/jjbcasas/shelf/blob/main/shelf-inv.gif"
  </a>
 </div>
-   A comprehensive inventory management app for personal and business use, featuring secure login (email/password, Google OAuth), customizable categories and items with photos, and real-time stock updates.
+   A comprehensive inventory management app with a Node.js/Express.js backend and EJS templating language for the views, for personal and business use, featuring secure login (email/password, Google OAuth), customizable categories and items with photos, and real-time stock updates.
    
 # 💻 Tech Stack:
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
