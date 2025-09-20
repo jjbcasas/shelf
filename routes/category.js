@@ -7,7 +7,7 @@ const { ensureAuth } = require('../middleware/auth')
 // Create and Read Category Routes
 router.get('/', ensureAuth, categoryController.getCategory)
 router.post('/createCategory', upload.single('file'), categoryController.createCategory)
-router.post('/extractPhotoCategory', upload.single('file'), categoryController.extractPhotoCategory)
+// router.post('/extractPhotoCategory', upload.single('file'), categoryController.extractPhotoCategory)
 
 // Create and Read Item Routes
 router.get('/getItem/:id', categoryController.getItem)
