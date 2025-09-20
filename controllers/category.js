@@ -5,6 +5,13 @@ const Item = require('../models/Item')
 const Log = require('../models/Log')
 const Sales = require('../models/Sales')
 const User = require('../models/User')
+require('dotenv').config({ path: '../config/.env' })
+// Imports the Google Cloud client library
+const vision = require('@google-cloud/vision')
+// Parse the JSON data from your environment variable
+const credentials = JSON.parse(process.env.GOOGLE_CLOUD_VISION_API);
+// Creates a client using the credentials
+const client = new vision.ImageAnnotatorClient({ credentials });
 
 module.exports = {
     getCategory: async( req, res ) => {
@@ -46,6 +53,19 @@ module.exports = {
             res.redirect('/category')
         } catch (error) {
             console.log(error)
+        }
+    },
+    extractPhotoCategory: async ( req, res ) => {
+        try {
+            const uploadResult = await cloudinary.uploader.upload(req.file.path)
+            console.log(uploadResult)
+            // Performs label detection on the image file
+            const [result] = await client.labelDetection(uploadResult.secure_url);
+            const labels = result.labelAnnotations;
+            console.log('Labels:');
+            labels.forEach(label => console.log(label.description));
+        } catch (error) {
+            console.error(error)
         }
     },
     getItem: async ( req, res ) => {
@@ -667,5 +687,5 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
 }

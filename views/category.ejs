@@ -98,27 +98,41 @@
 
                     </li>
                     <!-- Adding a Category -->
-                    <li>
-                        <details>
+                    <li class="w-full">
+                        <details class="mx-auto">
                             <summary>Add Category</summary>
                             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4 mt-2">
                                 <form action="/category/createCategory" enctype="multipart/form-data" method="POST">
-                    
+                                    
                                     <label for="categoryName" class="label">Name</label>
                                     <input type="text" name="categoryName" class="input" id="categoryName" required/>
                                     
                                     <label for="description" class="label w-full">Description</label>
                                     <textarea name="description" class="label w-full pt-2 pl-3" id="description"></textarea>
-
+                                    
                                     <div>
                                         <label for="imageUpload" class="fieldset-legend">Image</label>
                                         <input type="file" name="file" id="imageUpload" class="file-input">
                                     </div>
-                            
+                                    
                                     <button type="submit" class="btn btn-neutral mt-4">Add</button>
                                 </form>
                             </fieldset>
                         </details>
+                    </li>
+                    <li class="w-full">
+                        <details class="mx-auto">
+                            <summary>
+                                <form action="/category/extractPhotoCategory" enctype="multipart/form-data" method="POST">
+                                    <div>
+                                        <label for="imageUpload" class="fieldset-legend">Image</label>
+                                        <input type="file" name="file" id="imageUpload" class="file-input">
+                                    </div>
+                                    <button type="submit" class="btn btn-neutral mt-4">Extract</button>
+                                </form>
+                            </summary>
+                        </details>
+                        <h3></h3>
                     </li>
                 </ul>
             </div>
