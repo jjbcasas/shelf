@@ -1,7 +1,9 @@
 ## Shelf: <a href="https://shelf-inv.vercel.app">Visit Here</a>
 <div align="center">
  <a href="https://shelf-inv.vercel.app">
- <img src="https://github.com/jjbcasas/shelf/blob/main/shelf-inv.gif"
+  <picture>
+   <img src="https://github.com/jjbcasas/shelf/blob/main/shelf-inv.gif">
+  </picture>
  </a>
 </div>
    A comprehensive inventory management app with a Node.js/Express.js backend and EJS templating language for the views, for personal and business use, featuring secure login (email/password, Google OAuth), customizable categories and items with photos, and real-time stock updates.
